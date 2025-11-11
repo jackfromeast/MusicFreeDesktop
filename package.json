@@ -6,7 +6,7 @@
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
-    "electron": "ELECTRON_OVERRIDE_DIST_PATH=/Users/jackfromeast/Desktop/electron/proton-build-app/electron38/node_modules/electron/dist electron-forge start -- --inspect-brk=9229 --remote-debugging-port=9222",
+    "proton": "ELECTRON_OVERRIDE_DIST_PATH=/Users/jackfromeast/Desktop/electron/proton-build-app/electron38/node_modules/electron/dist electron-forge start -- --inspect-brk=9229 --remote-debugging-port=9222",
     "dev": "electron-forge start --inspect-electron",
     "package": "electron-forge package",
     "make": "electron-forge make",
