@@ -58,5 +58,34 @@ export const rendererConfig: Configuration = {
       "@shared": path.join(__dirname, "../src/shared")
     },
   },
-  externals: process.platform !== "darwin" ? ["fsevents"] : undefined,
+  externals: {
+    // Native modules that should not be bundled
+    'fsevents': 'commonjs2 fsevents',
+    'sharp': 'commonjs2 sharp',
+    
+    // Node.js built-in modules - make them external so they're not bundled
+    // but still available at runtime (for preload scripts with nodeIntegration)
+    'fs': 'commonjs2 fs',
+    'path': 'commonjs2 path',
+    'fs/promises': 'commonjs2 fs/promises',
+    'stream': 'commonjs2 stream',
+    'util': 'commonjs2 util',
+    'buffer': 'commonjs2 buffer',
+    'assert': 'commonjs2 assert',
+    'constants': 'commonjs2 constants',
+    'zlib': 'commonjs2 zlib',
+    'os': 'commonjs2 os',
+    'original-fs': 'commonjs2 original-fs',
+    
+    // Handle node: protocol for built-in modules (Node.js 22+)
+    'node:path': 'commonjs2 path',
+    'node:fs': 'commonjs2 fs',
+    'node:fs/promises': 'commonjs2 fs/promises',
+    'node:stream': 'commonjs2 stream',
+    'node:util': 'commonjs2 util',
+    'node:buffer': 'commonjs2 buffer',
+    'node:events': 'commonjs2 events',
+    'node:url': 'commonjs2 url',
+    'node:string_decoder': 'commonjs2 string_decoder',
+  },
 };
